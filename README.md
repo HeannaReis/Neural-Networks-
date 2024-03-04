@@ -1,11 +1,11 @@
-This project implements a simple neural network in JavaScript using the P5 library. The `RedeNeural` class represents a neural network with customizable numbers of input, hidden, and output nodes. It includes methods for feedforwarding input data through the network and computing the output.
+This project implements a simple neural network in JavaScript using the P5 extension. The `RedeNeural` class represents a neural network with customizable numbers of input, hidden, and output nodes. It includes methods for feedforwarding input data through the network and computing the output.
 
 The `Matrix` class provides basic matrix operations used in the neural network implementation, such as matrix multiplication, addition, and Hadamard product. These operations are essential for performing calculations within the neural network layers.
 
 ### To use the project:
 1. **Clone the repository to your local machine:**
     ```
-    git clone https://github.com/seuusuario/seuprojeto.git
+    git clone https://github.com/HeannaReis/Neural-Networks
     ```
 
 2. **Open the project directory in VS Code:**
