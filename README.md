@@ -10,7 +10,7 @@ The `Matrix` class provides basic matrix operations used in the neural network i
 
 2. **Open the project directory in VS Code:**
     ```
-    cd seuprojeto
+    cd Neural-Networks
     ```
 
 3. **Install the P5.js extension if not already installed.**
