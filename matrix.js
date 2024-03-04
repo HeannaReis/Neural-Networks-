@@ -1,122 +1,128 @@
-class Matrix{
-    constructor(rows, cols){
+class Matrix {
+    constructor(rows, cols) {
         this.rows = rows;
         this.cols = cols;
 
-        this.data= [];
-
-        for(let i=0; i<rows; i++){
+        // Inicializa os dados da matriz como uma matriz 2D preenchida com zeros
+        this.data = [];
+        for (let i = 0; i < rows; i++) {
             let arr = [];
-            for(let j=0; j<cols; j++){
-                arr.push(0)
+            for (let j = 0; j < cols; j++) {
+                arr.push(0);
             }
             this.data.push(arr);
         }
     }
 
-    //Funções Diversas
-    static arrayToMatrix(arr){
+    // Converte um array para uma matriz com uma única coluna
+    static arrayToMatrix(arr) {
         let matrix = new Matrix(arr.length, 1);
 
-        matrix.map((elm, i, j ) => {
+        matrix.map((elm, i, j) => {
             return arr[i];
-        })
+        });
         return matrix;
     }
 
-    print(){
+    // Imprime os dados da matriz em formato tabular
+    print() {
         console.table(this.data);
     }
 
+    // Preenche a matriz com valores inteiros aleatórios entre 0 e 9
     randomize() {
-        this.map((elm, i, j) =>{
+        this.map((elm, i, j) => {
             return Math.floor(Math.random() * 10);
         });
     }
 
-    static map(A, func){
+    // Aplica uma função a cada elemento da matriz
+    static map(A, func) {
         let matrix = new Matrix(A.rows, B.rows);
 
-        matrix.data = this.data.map((arr,i) => {
-            return arr.map((num,j)=>{
-                return func(num,i,j);
-            })
-        })
+        matrix.data = this.data.map((arr, i) => {
+            return arr.map((num, j) => {
+                return func(num, i, j);
+            });
+        });
         return matrix;
     }
 
-    map(func){
-        this.data = this.data.map((arr,i) => {
-            return arr.map((num,j)=>{
-                return func(num,i,j);
-            })
-        })
+    // Aplica uma função a cada elemento da matriz (método de instância)
+    map(func) {
+        this.data = this.data.map((arr, i) => {
+            return arr.map((num, j) => {
+                return func(num, i, j);
+            });
+        });
         return this;
     }
 
-    static transpose(){
+    // Transpõe a matriz
+    static transpose() {
         var matrix = new Matrix(A.cols, B.cols);
-        matrix.map((num,i,j) => {
-            return A.data;[j][i];
-        })
-
+        matrix.map((num, i, j) => {
+            return A.data[j][i];
+        });
     }
-    //Operações Estáticas Matriz Escalar
-    static escalar_multiply(A, escalar){
-        var matrix = new Matrix(A.rows,A.cols);
 
-        matrix.map((mul, i,j) => {
+    // Multiplica cada elemento da matriz por um valor escalar
+    static escalar_multiply(A, escalar) {
+        var matrix = new Matrix(A.rows, A.cols);
+
+        matrix.map((mul, i, j) => {
             return A.data[i][j] * escalar;
         });
 
         return matrix;
     }
 
-    //Operações Estáticas Matriz X Matriz
-    static hadamard(A, B){
+    // Realiza o produto de Hadamard (multiplicação elemento a elemento) de duas matrizes
+    static hadamard(A, B) {
         var matrix = new Matrix(A.rows, A.cols);
 
-        matrix.map((num, i,j) => {
+        matrix.map((num, i, j) => {
             return A.data[i][j] * B.data[i][j];
         });
 
         return matrix;
     }
 
-    static add(A,B){
-        var matrix = new Matrix(A.rows,A.cols);
+    // Adiciona duas matrizes elemento a elemento
+    static add(A, B) {
+        var matrix = new Matrix(A.rows, A.cols);
 
-        matrix.map((mul, i,j) => {
+        matrix.map((mul, i, j) => {
             return A.data[i][j] + B.data[i][j];
         });
 
         return matrix;
     }
 
-    static subtratic() {
-        var matrix = new Matrix(A.rows,A.cols);
+    // Subtrai duas matrizes elemento a elemento
+    static subtract(A, B) {
+        var matrix = new Matrix(A.rows, A.cols);
 
-        matrix.map((mul, i,j) => {
+        matrix.map((mul, i, j) => {
             return A.data[i][j] - B.data[i][j];
         });
 
         return matrix;
-        
     }
 
-    static multiply(A,B){
+    // Multiplica duas matrizes (multiplicação de matrizes)
+    static multiply(A, B) {
         var matrix = new Matrix(A.rows, B.cols);
-        
-        matrix.map((num, i, j)=>{
-            let sun =0
-            for(let k = 0; k < A.cols; k++){
+
+        matrix.map((num, i, j) => {
+            let sum = 0;
+            for (let k = 0; k < A.cols; k++) {
                 let elm1 = A.data[i][k];
                 let elm2 = B.data[k][j];
-                sun += elm1 * elm2;
+                sum += elm1 * elm2;
             }
-
-            return sun;
-        })
+            return sum;
+        });
 
         return matrix;
     }

@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(300, 300);
   background(0);
 
 let A = new Matrix(2,2);
