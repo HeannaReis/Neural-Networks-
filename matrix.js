@@ -14,6 +14,7 @@ class Matrix{
         }
     }
 
+    //Funções Diversas
     static arrayToMatrix(arr){
         let matrix = new Matrix(arr.length, 1);
 
@@ -29,7 +30,7 @@ class Matrix{
 
     randomize() {
         this.map((elm, i, j) =>{
-            return Math.random() * 2 - 1;
+            return Math.floor(Math.random() * 10);
         });
     }
 
@@ -53,15 +54,54 @@ class Matrix{
         return this;
     }
 
+    static transpose(){
+        var matrix = new Matrix(A.cols, B.cols);
+        matrix.map((num,i,j) => {
+            return A.data;[j][i];
+        })
+
+    }
+    //Operações Estáticas Matriz Escalar
+    static escalar_multiply(A, escalar){
+        var matrix = new Matrix(A.rows,A.cols);
+
+        matrix.map((mul, i,j) => {
+            return A.data[i][j] * escalar;
+        });
+
+        return matrix;
+    }
+
+    //Operações Estáticas Matriz X Matriz
+    static hadamard(A, B){
+        var matrix = new Matrix(A.rows, A.cols);
+
+        matrix.map((num, i,j) => {
+            return A.data[i][j] * B.data[i][j];
+        });
+
+        return matrix;
+    }
 
     static add(A,B){
         var matrix = new Matrix(A.rows,A.cols);
 
         matrix.map((mul, i,j) => {
-            return A.data[i][j] * B.data[i][j];
+            return A.data[i][j] + B.data[i][j];
         });
 
         return matrix;
+    }
+
+    static subtratic() {
+        var matrix = new Matrix(A.rows,A.cols);
+
+        matrix.map((mul, i,j) => {
+            return A.data[i][j] - B.data[i][j];
+        });
+
+        return matrix;
+        
     }
 
     static multiply(A,B){
