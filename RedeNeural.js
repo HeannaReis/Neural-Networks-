@@ -67,8 +67,6 @@ class RedeNeural {
 
         this.bias_ih = Matrix.add(this.bias_ih, gradient_H);
         let weights_ih_delta = Matrix.multiply(gradient_H, input_T);
-        weights_ih_delta.print();
-        this.weights_ih.print();
         this.weights_ih = Matrix.add(this.weights_ih, weights_ih_delta);
     }
 
