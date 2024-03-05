@@ -32,15 +32,16 @@ class Matrix {
     // Preenche a matriz com valores inteiros aleatórios entre 0 e 9
     randomize() {
         this.map((elm, i, j) => {
-            return Math.floor(Math.random() * 10);
+            return Math.random() * 2 - 1;
+            //return Math.floor(Math.random() * 10);
         });
     }
 
     // Aplica uma função a cada elemento da matriz
     static map(A, func) {
-        let matrix = new Matrix(A.rows, B.rows);
+        let matrix = new Matrix(A.rows, A.cols);
 
-        matrix.data = this.data.map((arr, i) => {
+        matrix.data = A.data.map((arr, i) => {
             return arr.map((num, j) => {
                 return func(num, i, j);
             });
@@ -59,11 +60,12 @@ class Matrix {
     }
 
     // Transpõe a matriz
-    static transpose() {
-        var matrix = new Matrix(A.cols, B.cols);
+    static transpose(A) {
+        var matrix = new Matrix(A.cols, A.rows);
         matrix.map((num, i, j) => {
             return A.data[j][i];
         });
+        return matrix;
     }
 
     // Multiplica cada elemento da matriz por um valor escalar
@@ -93,7 +95,7 @@ class Matrix {
         var matrix = new Matrix(A.rows, A.cols);
 
         matrix.map((mul, i, j) => {
-            return A.data[i][j] + B.data[i][j];
+            return A.data[i][j] - B.data[i][j];
         });
 
         return matrix;

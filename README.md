@@ -2,6 +2,13 @@ This project implements a simple neural network in JavaScript using the P5 exten
 
 The `Matrix` class provides basic matrix operations used in the neural network implementation, such as matrix multiplication, addition, and Hadamard product. These operations are essential for performing calculations within the neural network layers.
 
+To Do: Implement
+- Static Map function
+- Hadamard Product
+- Scalar Product
+- Matrix Transposition
+- Matrix Subtraction
+
 ### To use the project:
 1. **Clone the repository to your local machine:**
     ```

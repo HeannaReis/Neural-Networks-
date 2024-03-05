@@ -1,20 +1,24 @@
 function setup() {
+
+  var train = true;
   createCanvas(300, 300);
   background(0);
 
-let A = new Matrix(2,2);
-let B = new Matrix(2,2);
-A.randomize();
-B.randomize();
-A.print();
-B.print();
 
-let C = Matrix.hadamard(A,B);
-C.print();
-  // var rn= new RedeNeural(1,3,5);
+  nn= new RedeNeural(1, 3, 2);
+  let arr = [1,2];
+  nn.train(arr,[0,1]);
 
-  // var arr = [1,2];
-  // rn.feedforward(arr);
+//testing operations matrix class
+// let A = new Matrix(2,1);
+// let B = new Matrix(2,1);
+// A.randomize();
+// B.randomize();
+// A.print();
+// B.print();
+
+// let C = Matrix.subtract(A,B);
+// C.print();
 }
 function draw() {
   

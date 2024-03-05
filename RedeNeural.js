@@ -1,6 +1,11 @@
 function sigmoid(x) {
     return 1 / (1 + Math.exp(-x));
 }
+
+
+function dsigmoid(y){
+    return y * (1 - y);
+}
 class RedeNeural{
     constructor(i_nodes, h_nodes, o_nodes){
         this.i_nodes = i_nodes;
@@ -19,22 +24,27 @@ class RedeNeural{
         this.weights_ho.randomize();
     }
 
-    feedforward(arr) {
+    train(arr, target){
         //INPUT -> HIDDEN
         let input = Matrix.arrayToMatrix(arr);
+
         let hidden = Matrix.multiply(this.weigths_ih, input);
         hidden = Matrix.add(hidden, this.bias_ih);
-        hidden.print();
         hidden.map(sigmoid);
-        hidden.print();
 
         //HIDDEN -> OUTPUT
+        //d(sigmoid) = Output * (-1 Output)
         let output = Matrix.multiply(this.weights_ho, hidden);
         output = Matrix.add(output, this.bias_ho);
         output.map(sigmoid);
 
-        output.print();
 
+        //BACKPROPAGATION
+        let expected = Matrix.arrayToMatrix(target);
+        let output_error = Matrix.subtract(expected, output); // Corrigido para subtrair de 'output'
+        let d_output = Matrix.map(output, dsigmoid); // Corrigido para aplicar 'dsigmoid' em 'output'
         
+        let gradient = Matrix.hadamard(output_error, d_output);
+        gradient.print();
     }
 }
